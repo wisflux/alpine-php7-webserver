@@ -32,6 +32,7 @@ RUN apk --no-cache add \
         php7-mbstring \
         php7-gd \
         apache2 \
+        apache2-proxy \
         runit \
         curl \
     && \
