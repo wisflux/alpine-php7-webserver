@@ -43,6 +43,12 @@ RUN apk --no-cache add \
 # Add configuration files
 COPY --chown=nobody config/ /
 
+RUN apk add --no-cache ca-certificates && update-ca-certificates && \
+    wget -O /microscanner https://get.aquasec.com/microscanner && \
+    chmod +x /microscanner && \
+    /microscanner $MICROSCANNER_TOKEN && \
+    rm -rf /microscanner
+
 # Switch to use a non-root user from here on
 USER nobody
 
@@ -57,3 +63,4 @@ CMD [ "/bin/docker-entrypoint.sh" ]
 
 # Configure a healthcheck to validate that everything is up&running
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping
+
