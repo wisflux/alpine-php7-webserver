@@ -42,7 +42,8 @@ RUN apk --no-cache add \
 
 # Add configuration files
 COPY --chown=nobody config/ /
-
+ARG MICROSCANNER_TOKEN
+ENV MICROSCANNER_TOKEN=$MICROSCANNER_TOKEN
 RUN apk add --no-cache ca-certificates && update-ca-certificates && \
     wget -O /microscanner https://get.aquasec.com/microscanner && \
     chmod +x /microscanner && \
