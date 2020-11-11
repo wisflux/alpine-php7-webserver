@@ -1,7 +1,7 @@
 ARG ARCH=
 FROM ${ARCH}alpine:3.12
 
-LABEL Maintainer="Ernesto Serrano <info@ernesto.es>" \
+LABEL Maintainer="Chandraprakash Sharm <cp@wisflux.com>" \
       Description="Lightweight container with Nginx 1.18 & PHP-FPM 7.3 based on Alpine Linux."
 
 # Install packages
